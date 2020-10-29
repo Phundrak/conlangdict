@@ -1,0 +1,115 @@
+#+TITLE:  ConlangDict
+#+AUTHOR: Lucien Cartier-Tilet
+#+EMAIL:  lucien@phundrak.com
+
+* Table of Contents                                                :toc_4:gh:
+- [[#about-conlangdict][About ConlangDict]]
+  - [[#built-with-django-and-emacs][Built with Django and Emacs]]
+- [[#getting-started][Getting started]]
+  - [[#prerequisites][Prerequisites]]
+  - [[#running-the-project][Running the project]]
+- [[#scope-of-this-project][Scope of this project]]
+- [[#roadmap-26][Roadmap]]
+- [[#contributing][Contributing]]
+- [[#license][License]]
+- [[#contact][Contact]]
+
+* About ConlangDict
+  ConlangDict is a  project born out of  a personal need of a  dictionary for my
+  constructed languages (/conlangs/). I wanted a dictionary that could translate
+  both  to and  from my  conlangs, as  well as  provide ways  to categorize  the
+  vocabulary in themes in order to make a lexicon and not only a dictionary. So,
+  here it  is, a  work in progress  on a  website that will  allow me  to better
+  manage my conlangs’ vocabulary.
+
+** Built with Django and Emacs
+   ConlangDict is  built with Django  3 as its  main framework, which  of course
+   implies the use of Python 3. It will also make use for now of HTML templates,
+   CSS3 for  theming and maybe some  Javascript (EcmaScript) or Dart  to make it
+   more interactive, although CSS will be preffered to Javascript.
+
+   I also use Emacs for developing this project, as well as Docker to spin it up
+   along with its Postgres database.
+
+* Getting started
+** Prerequisites
+   To run this project,  you will need to have Docker  as well as docker-compose
+   installed on  your machine, as  well as a web  browser (obviously, this  is a
+   website we’re talking about).
+
+** Running the project
+   It  is   possible  to   run  this  project   with  Docker,   preferably  with
+   ~docker-compose~. A  file for this use  should be provided with  the project,
+   and the  only thing you  will have  to do is  run ~docker-compose up~  in the
+   terminal. Your app  should now be available at ~localhost:8000~.  This is the
+   method used in development.
+
+* Scope of this project
+  This project is meant to offer on [[langue.phundrak.com][my conlanging website]] an easy to use online
+  and interactive dictionary for my conlangs. Hence:
+  - This dictionary  should be able  to list all  words from a  source language,
+    either  a  natural  language  (natlang)   or  a  conlang,  and  display  its
+    translation into the target language.
+  - When all words are listed, only a simple translation should be offered to
+    the readers of the website.
+  - If the  reader wishes to  have more  information, they should  be redirected
+    when clicking on a  word to a page dedicated to this  specific word. If this
+    is a word from a conlang, it  should display some more information about the
+    word, its detailed meaning, some examples  of use, its lexicon category, and
+    potentially its etymology  and translations in all the natlangs  it has been
+    translated to.
+  - When  on the  detailed page,  the words  listed as  the transalitons  of the
+    current word  should be clickable and  redirect to the detailed  page of the
+    clicked word. The  same should be applicable to words  listed in the current
+    word’s etymology.
+  - Optionaly, there sohuld be  a search bar with which the  user can search for
+    terms in the source language, ideally  with five suggested words as the user
+    is writing in the search bar. Are considered a priority words containing the
+    searched term, then words which contain  the term in their translation, then
+    in their etymology, then in examples of use.
+
+* Roadmap [2/6]
+  Here is the list  of features and todos of the project,  and whether they have
+  been implemented or not.
+  - [-] Display all words from a specified language
+    - [X] List all words from the specified natlang and conlang
+    - [ ]  List all words from  the specified natlang and  conlang starting with
+      the specified caracter
+  - [X] Access a word’s details on a click
+  - [X]  Create   text boxes  for word  details and  etymology dependent  on the
+    language a  word has ben  translated for. For  instance, no need  to display
+    them for English words
+  - [-] Add user acconut support [1/6]
+    - [-] Add user account registration
+    - [ ] Display whether the user is logged in
+    - [ ] Add user login
+    - [X] Add user logout
+    - [ ] Add user account edition
+    - [ ] Add user account deletion
+  - [ ] Dedicated webpages for creation and edition of data [0/4]
+    - [ ] Add  words, genders, word classes, and languages  from a dedicated web
+      page instead of the admin panel
+    - [ ] Edit words, genders, word  classes, and languages from a dedicated web
+      page instead of the admin panel
+    - [ ] Authorize users to create their own language and edit it
+    - [ ] Authorize other users to edit a language another user owns [0/3]
+      - [ ] Display contributor’s name on word’s details
+      - [ ] Create a /contributor/ role that can be given by the language’s owner
+      - [ ] Create an /admin/ role that can be given by the language’s owner
+  - [ ] Add premade dictionaries for natlangs [0/2]
+    - [ ] Add all words from the English language
+    - [ ] Add all words from the French language
+
+* Contributing
+  See [[file:CONTRIBUTING.org][CONTRIBUTING.org]].
+
+* License
+  This  project  is  under  the  GNU GPLv3  license.  See  [[file:LICENSE.md][LICENSE.md]]  for  more
+  information.
+
+* Contact
+  Lucien “P’undrak” Cartier-Tilet - [[https://twitter.com/phundrak][@Phundrak]] – [[mailto:lucien@phundrak.com][lucien@phundrak.com]]
+
+  Project link: [[https://labs.phundrak.com/phundrak/conlangdict]]
+
+  Github mirror: [[https://github.com/phundrak/conlangdict]]
