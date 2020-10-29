@@ -1,0 +1,76 @@
+.wordcard {
+    text-decoration: none;
+    display: grid;
+    grid-auto-rows: min-content;
+    grid-gap: 10px;
+    grid-template-areas:
+        'word word word'
+        'fromlang wclass gender'
+        'translations translations translations'
+        'details details details'
+        'etymology etymology etymology';
+    padding: 20px;
+    margin: 20px;
+    background: #2c3e50;
+    color: #fcfcfc;
+    box-shadow: 4px 4px 8px #000;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+.card {
+    color: #fcfcfc;
+    margin: 20px;
+    padding: 20px;
+    background-color: #34495e;
+    box-shadow: 3px 3px 4px #000;
+    transition: box-shadow 0.2s;
+}
+
+.card:hover {
+    box-shadow: 6px 6px 15px #000;
+    transition: box-shadow 0.3s;
+}
+
+.word {
+    grid-area: word;
+    font-size: 4em;
+    align-self: end;
+}
+
+.fromlang {
+    grid-area: fromlang;
+    align-self: end;
+}
+
+.wordclass {
+    grid-area: wclass;
+}
+
+.listtrans {
+    grid-area: translations;
+}
+
+.transdetails {
+    grid-area: details;
+}
+
+.etymology {
+    grid-area: etymology;
+}
+
+.gender {
+    grid-area: gender;
+}
+
+.title {
+    font-size: 1.3em;
+    text-decoration: underline;
+    line-height: 0.8em;
+}

@@ -1,0 +1,22 @@
+<!--
+     Requires:
+     `natlangs` List of Language objects
+     `conlangs` List of Language objects
+-->
+
+{% extends 'dictionary/base.html' %}
+{% load static %}
+
+<!---------------------------------------------------------------------------->
+<!--               Page d’accueil, sélection des deux langues               -->
+<!---------------------------------------------------------------------------->
+
+{% block title %}Language selection{% endblock %}
+
+{% block addhead %}
+<link rel="stylesheet" href="{% static 'dictionary/css/index.css' %}" type="text/css" media="screen" />
+{% endblock %}
+
+{% block body %}
+<h1 class="index-title">Welcome to Phundrak’s ConlangDict!</h1>
+{% endblock %}

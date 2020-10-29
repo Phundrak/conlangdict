@@ -1,0 +1,66 @@
+h2 {
+    text-align: center;
+}
+
+.content {
+    display: grid;
+    grid-template-areas:
+        'natw conw';
+}
+
+.natlangw {
+    grid-area: natw;
+    overflow-y: auto;
+}
+
+.conlangw {
+    grid-area: conw;
+    overflow-y: auto;
+}
+
+.wordblock {
+    text-decoration: none;
+    margin: 40px;
+    padding: 20px;
+    display: grid;
+    grid-template-areas:
+        'word word'
+        'wclass gender'
+        'translation translation';
+    background: #2c3e50;
+    color: #ecf0f1;
+    box-shadow: 5px 5px 10px #000;
+    transition: box-shadow 0.2s;
+}
+
+.wordblock:hover {
+    box-shadow: 15px 15px 30px #000;
+    transition: box-shadow 0.3s;
+}
+
+.word {
+    margin: 10px;
+    grid-area: word;
+    font-size: 2em;
+}
+
+.wclass {
+    grid-area: wclass;
+}
+
+.gender {
+    grid-area: gender;
+}
+
+.translations {
+    grid-area: translation;
+    list-style: none;
+}
+
+.translations::before {
+    content: "Translations:";
+}
+
+li {
+    margin: 10px;
+}

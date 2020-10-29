@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'dictionary/css/style.css' %}" type="text/css" media="screen" />
+    <link rel="shortcut icon" href="https://cdn.phundrak.fr/img/mahakala-128x128.png" type="image/png" media="screen" />
+    <link rel="shortcut icon" href="https://cdn.phundrak.fr/img/mahakala-128x128.png" type="image/png" />
+    <script type="text/javascript" src="{% static 'dictionary/js/animations.js' %}"></script>
+    <meta property="og:image" content="https://cdn.phundrak.fr/img/rich_preview.jpg" />
+    <meta property="og:title" content="Dictionnaire de Conlangs" />
+    <meta property="og:description" content="Dictionnaire bilingue en ligne des langues construites de P’undrak" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@phundrak" />
+    <meta name="twitter:creator" content="@phundrak" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block addhead %}{% endblock %}
+</head>
+
+<body>
+    {% include 'dictionary/ribbon.html' %}
+    <div class="content" onscroll="hideRibbon()">
+        <div class="errormessage">
+            {% if error_message %}
+            <p><strong>{{ error_message }}</strong></p>
+            {% endif %}
+        </div>
+        {% block body %}
+        {% endblock %}
+    </div>
+</body>
+
+</html>

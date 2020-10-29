@@ -1,0 +1,29 @@
+{% extends 'dictionary/base.html' %}
+{% load static %}
+
+<!---------------------------------------------------------------------------->
+<!--                            Registration page                           -->
+<!---------------------------------------------------------------------------->
+
+
+<!-- title ------------------------------------------------------------------->
+{% block title %}Account Registration{% endblock %}
+
+<!-- headers ----------------------------------------------------------------->
+{% block addhead %}
+<link rel="stylesheet" href="{% static 'dictionary/css/registration.css' %}" type="text/css" media="screen" />
+{% endblock %}
+
+<!-- sidebar ----------------------------------------------------------------->
+{% block sidebarcontent %}
+{% endblock %}
+
+<!-- body -------------------------------------------------------------------->
+{% block body %}
+<h3>Register a new account</h3>
+<form method="post" action="">
+    {% csrf_token %}
+    {% include 'dictionary/form_template.html' %}
+    <button type="submit">Submit</button>
+</form>
+{% endblock %}

@@ -1,0 +1,78 @@
+<!--
+     Requires:
+     `natwords` List of Word objects
+     `conwords` List of Word objects
+     `cur_natlang` Language object
+     `cur_conlang` Language object
+-->
+
+{% extends 'dictionary/base.html' %}
+{% load static %}
+
+<!-- TITLE ------------------------------------------------------------------->
+{% block title %}{{cur_natlang.name}} ⇌ {{cur_conlang.name}}{% endblock %}
+
+<!-- HEADERS ----------------------------------------------------------------->
+{% block addhead %}
+<link rel="stylesheet" href="{% static 'dictionary/css/language.css' %}" type="text/css" media="screen" />
+{% endblock %}
+
+<!-- SIDEBAR ----------------------------------------------------------------->
+{% block sidebarcontent %}
+<h1 class="sidebar-title">Translating between {{cur_natlang.name}} and {{cur_conlang.name}}</h1>
+{% include "dictionary/footer-back-index.html" %}
+{% endblock %}
+
+<!-- BODY -------------------------------------------------------------------->
+{% block body %}
+<div class="natlangw">
+    <h2>{{cur_natlang.name}}</h2>
+    <div class="wordlist">
+        {% for word in natwords %}
+        <a href="{% url 'dictionary:details' cur_natlang.code cur_conlang.code word.slug %}" class="wordblock">
+            <div class="word">{{word.word}}</div>
+            <div class="wclass">
+                {% if word.wordclass %}
+                {% for wclass in word.wordclass.all %}
+                {{wclass}}
+                {% endfor %}
+                {% endif %}
+            </div>
+            <div class="gender">{% if word.gender %}{{word.gender}}{% endif %}</div>
+            <ul class="translations">
+                {% for trans in word.translation.all %}
+                {% if trans.language.code == cur_conlang.code %}
+                <li>{{trans}}</li>
+                {% endif %}
+                {% endfor %}
+            </ul>
+        </a>
+        {% endfor %}
+    </div>
+</div>
+<div class="conlangw">
+    <h2>{{cur_conlang.name}}</h2>
+    <div class="wordlist">
+        {% for word in conwords %}
+        <a href="{% url 'dictionary:details' cur_conlang.code cur_natlang.code word.slug %}" class="wordblock">
+            <div class="word">{{word.word}}</div>
+            <div class="wclass">
+                {% if word.wordclass %}
+                {% for wclass in word.wordclass.all %}
+                {{wclass}}
+                {% endfor %}
+                {% endif %}
+            </div>
+            <div class="gender">{% if word.gender %}{{word.gender}}{% endif %}</div>
+            <ul class="translations">
+                {% for trans in word.translation.all %}
+                {% if trans.language.code == cur_natlang.code %}
+                <li>{{trans}}</li>
+                {% endif %}
+                {% endfor %}
+            </ul>
+        </a>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

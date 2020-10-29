@@ -1,0 +1,182 @@
+@import url(https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic|Roboto+Slab:400,700|Inconsolata:400,700);
+
+@font-face {
+    font-family: "DoulosSIL";
+    font-display: swap;
+    src: url("../fonts/DoulosSIL-R.woff");
+}
+
+body {
+    margin: 0;
+    height: 100%;
+    background: #34495e;
+    display: grid;
+    overflow: auto;
+    height: 100vh;
+    grid-template-areas:
+        'ribbon'
+        'content';
+    color: #ecf0f1;
+    grid-template-rows: 75px auto;
+}
+
+.ribbon {
+    background-color: #1abc9c;
+    grid-area: ribbon;
+    display: grid;
+    grid-template-areas:
+        'navigation lang-select searchbar user-account';
+}
+
+.ribbon-nav {
+    grid-area: navigation;
+}
+
+.ribbon-link {
+    display: inline-block;
+    color: #ecf0f1;
+    text-decoration: none;
+    vertical-align: middle;
+}
+
+.ribbon-nav h2,
+.ribbon-user-account h2 {
+    margin: 0 auto;
+    vertical-align: middle;
+}
+
+.content {
+    /* margin: 10px; */
+    padding: 20px;
+    grid-area: content;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.errormessage {
+    color: red;
+    text-align: center;
+    font-size: 1.5em;
+    font-family: "DoulosSIL", "Lato", "proxima-nova", "Helvetica Neue", Arial, sans-serif;
+}
+
+h1,
+h2 {
+    font-family: "Roboto Slab", "ff-tisa-web-pro", "Georgia", Arial, sans-serif;
+    text-align: center;
+}
+
+h1 {
+    margin-bottom: .2em;
+    font-size: 175%;
+    font-weight: 700;
+}
+
+p,
+label {
+    line-height: 24px;
+    font-size: 18px;
+    font-weight: normal;
+    margin: 0 0 24px 0;
+    box-sizing: border-box;
+    display: block;
+    font-family: "DoulosSIL", "Lato", "proxima-nova", "Helvetica Neue", Arial, sans-serif;
+}
+
+.index {
+    grid-area: index;
+}
+
+.back {
+    grid-area: back;
+}
+
+.content {
+    display: grid;
+    grid-template-columns: auto;
+    grid-auto-rows: min-content;
+    grid-template-areas: 'message''form';
+}
+
+#language-select {
+    grid-area: lang-select;
+    display: grid;
+    grid-template-areas:
+        'source dest submition';
+    margin: 20px 0;
+}
+
+.sourcelang {
+    grid-area: source;
+}
+
+.destlang {
+    grid-area: dest;
+}
+
+.sourcelang,
+.destlang {
+    display: grid;
+    grid-template-areas: 'label select';
+}
+
+label {
+    grid-area: label;
+    text-align: center;
+    margin: auto 0;
+}
+
+/* inspired from https://coderwall.com/p/w7npmq/fully-custom-select-box-simple-css-only */
+.form-style {
+    border: 1px solid #ddd;
+    width: 80px;
+    border-radius: 3px;
+    overflow: hidden;
+    margin: auto;
+}
+
+.form-style select,
+.form-style input {
+    padding: 5px 10px;
+    width: 100%;
+    border: none;
+    box-shadow: none;
+    background: transparent;
+    background-image: none;
+    -webkit-appearance: none;
+}
+
+.form-style select:focus {
+    outline: none;
+}
+
+.index-title {
+    grid-area: message;
+    margin: 0 20px;
+}
+
+submit {
+    width: 50%;
+    grid-area: submition;
+}
+
+h2 {
+    padding: 20px;
+}
+
+/*****************************************************************************/
+/*                                 scrollbar                                 */
+/*****************************************************************************/
+
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    display: none;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #343131;
+    border-radius: 3px;
+}

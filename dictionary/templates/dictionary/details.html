@@ -1,0 +1,77 @@
+{% extends 'dictionary/base.html' %}
+{% load static %}
+
+<!--
+     Requires:
+     `word` is the main word of the page, Word
+     `translations` are all the words that translate `word` to other languages, Word[]
+     `from_lang` is the original language, Language
+     `to_lang` is the target language, Language
+-->
+
+<!-- TITLE ------------------------------------------------------------------->
+{% block title %}{{ word.word }} - {{ from_lang.name }}{% endblock %}
+
+<!-- HEADER ------------------------------------------------------------------>
+{% block addhead %}
+<link rel="stylesheet" href="{% static 'dictionary/css/details.css' %}" type="text/css" media="screen" />
+{% endblock %}
+
+<!-- SIDEBAR ----------------------------------------------------------------->
+{% block sidebarcontent %}
+<h1 class="sidebar-title">Detailed Translation</h1>
+{% include "dictionary/footer-back-index.html" %}
+{% endblock %}
+
+<!-- BODY -------------------------------------------------------------------->
+{% block body %}
+<div class="wordcard">
+    <div class="word">{{ word.word }}</div>
+    <div class="fromlang">
+        <p class="title">Language: </p>
+        <p>{{ from_lang.name }}</p>
+    </div>
+    <div class="gender">
+        {% if word.gender %}
+        <p class="title">Gender:</p>
+        <p>{{ word.gender }}</p>
+        {% endif %}
+    </div>
+    <div class="wordclass">
+        <p class="title">Word class:</p>
+        <p>{% for wclass in word.wordclass.all %}{{wclass}}{% endfor %}</p>
+    </div>
+    <div class="listtrans">
+        {% if translations %}
+        <p class="title">Translations of “{{ word.word }}” in {{ to_lang.name }}:</p>
+        {% for translation in translations %}
+        <a href="{% url 'dictionary:details' to_lang.code from_lang.code translation.slug %}">
+            <p class="card">{{ translation.word }}: {% for twclass in translation.wordclass.all %}{{twclass}} {% endfor %}</p>
+        </a>
+        {% endfor %}
+        {% endif %}
+    </div>
+    <div class="transdetails">
+        {% if word.details %}
+        <p class="title">Details:</p>
+        <p>{{ word.details }}</p>
+        {% endif %}
+    </div>
+    <div class="etymology">
+        {% if word.etymology %}
+        <p class="title">Etymology: </p>
+        <p>{{word.etymology}}</p>
+        {% endif %}
+        {% if word.roots.all %}
+        <div class="roots">
+            <p class="title">Etymological roots:</p>
+            {% for root in word.roots.all %}
+            <a href="{% url 'dictionary:details' from_lang.code to_lang.code root.slug %}">
+                <p class="card">{{root.word}} ({{root.wordclass.name}})</p>
+            </a>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
